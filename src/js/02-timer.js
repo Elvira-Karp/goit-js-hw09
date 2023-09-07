@@ -29,11 +29,11 @@ const options = flatpickr(input, {
       startBtn.addEventListener('click', () => {
        const timerId = setInterval(() => {
          const currentTime = new Date();
-         const ms = selectedDates[0].getTime() - currentTime.getTime();
-         timerDays.textContent = addLeadingZero(convertMs(ms).days);
-         timerHours.textContent = addLeadingZero(convertMs(ms).hours);
-         timerMinutes.textContent = addLeadingZero(convertMs(ms).minutes);
-         timerSeconds.textContent = addLeadingZero(convertMs(ms).seconds);
+         const time = selectedDates[0].getTime() - currentTime.getTime();
+         timerDays.textContent = addLeadingZero(convertMs(time).days);
+         timerHours.textContent = addLeadingZero(convertMs(time).hours);
+         timerMinutes.textContent = addLeadingZero(convertMs(time).minutes);
+         timerSeconds.textContent = addLeadingZero(convertMs(time).seconds);
 
          if (ms < 0) {
            clearInterval(timerId);

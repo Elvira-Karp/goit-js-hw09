@@ -1,6 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
+import convertMs from './dateConvert';
 
 const input = document.querySelector('#datetime-picker');
 
@@ -12,6 +13,7 @@ let timerMinutes = document.querySelector('span[data-minutes]');
 let timerSeconds = document.querySelector('span[data-seconds]');
 
 const currentDate = new Date();
+
 
 startBtn.disabled = true;
 let timerId;
@@ -29,11 +31,11 @@ const options = flatpickr(input, {
       startBtn.addEventListener('click', () => {
        const timerId = setInterval(() => {
          const currentTime = new Date();
-         const time = selectedDates[0].getTime() - currentTime.getTime();
-         timerDays.textContent = addLeadingZero(convertMs(time).days);
-         timerHours.textContent = addLeadingZero(convertMs(time).hours);
-         timerMinutes.textContent = addLeadingZero(convertMs(time).minutes);
-         timerSeconds.textContent = addLeadingZero(convertMs(time).seconds);
+         const ms = selectedDates[0].getTime() - currentTime.getTime();
+         timerDays.textContent = addLeadingZero(convertMs(ms).days);
+         timerHours.textContent = addLeadingZero(convertMs(ms).hours);
+         timerMinutes.textContent = addLeadingZero(convertMs(ms).minutes);
+         timerSeconds.textContent = addLeadingZero(convertMs(ms).seconds);
 
          if (ms < 0) {
            clearInterval(timerId);
@@ -44,3 +46,6 @@ const options = flatpickr(input, {
   },
 });
 
+function addLeadingZero(value) {
+  return value.toString().padStart(2, '0');
+}

@@ -36,9 +36,12 @@ const options = flatpickr(input, {
          timerHours.textContent = addLeadingZero(convertMs(ms).hours);
          timerMinutes.textContent = addLeadingZero(convertMs(ms).minutes);
          timerSeconds.textContent = addLeadingZero(convertMs(ms).seconds);
-
          if (ms < 0) {
            clearInterval(timerId);
+           timerDays.textContent = '00';
+           timerHours.textContent = '00';
+           timerMinutes.textContent = '00';
+           timerSeconds.textContent = '00';
          }
         }, 1000)
       })
@@ -49,3 +52,4 @@ const options = flatpickr(input, {
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
+

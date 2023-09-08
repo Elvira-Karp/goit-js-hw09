@@ -24,6 +24,8 @@ function onSubmitForm(e) {
       });
     delay += Number(formRef.step.value);
   }
+
+  formRef.toggleAttribute('disabled');
 }
 
 
@@ -43,3 +45,5 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
+
+

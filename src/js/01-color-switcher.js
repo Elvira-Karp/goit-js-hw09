@@ -19,9 +19,9 @@ function onStart() {
 
 
 function onStop() {
-  clearInterval(timerId);
-
   dataStartRef.removeAttribute('disabled');
+  dataStopRef.toggleAttribute('disabled');
+  clearInterval(timerId);
 }
 
 
